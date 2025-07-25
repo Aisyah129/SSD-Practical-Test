@@ -5,5 +5,5 @@ COPY app /app
 
 RUN pip install flask
 
-EXPOSE 5000
+EXPOSE 5050
 CMD ["python", "main.py"]
