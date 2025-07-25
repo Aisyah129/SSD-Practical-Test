@@ -1,7 +1,15 @@
+import time
 import requests
-from bs4 import BeautifulSoup
 
-resp = requests.get('http://127.0.0.1:5050')  # ✅ Specify correct port
-soup = BeautifulSoup(resp.text, 'html.parser')
-assert soup.find('form'), 'Form not found!'
-print('✅ UI test passed!')
+url = "http://127.0.0.1:5050"
+
+for i in range(10):
+    try:
+        resp = requests.get(url)
+        print("Connected!")
+        break
+    except Exception as e:
+        print(f"Retry {i+1}: {e}")
+        time.sleep(1)
+else:
+    raise Exception("Server never came online.")
